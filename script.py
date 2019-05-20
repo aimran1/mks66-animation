@@ -19,11 +19,18 @@ from draw import *
   with the name being used.
   ==================== """
 def first_pass( commands ):
-
     name = ''
     num_frames = 1
-
-    return (name, num_frames)
+    for command in commands:
+        c = command['op']
+        args = command['args']
+        if c == "basename":
+            name = args[0]
+        if c == "frames":
+            num_frames = args[0]
+        elif c == "vary":
+            break
+    return (name, int(num_frames))
 
 """======== second_pass( commands ) ==========
 
@@ -44,7 +51,14 @@ def first_pass( commands ):
   ===================="""
 def second_pass( commands, num_frames ):
     frames = [ {} for i in range(num_frames) ]
-
+    print commands
+    for command in commands:
+        c = command['op']
+        args = command['args']
+        knob = command['knobs']
+        if c == "vary":
+            for i range(num_frames):
+                frames.append(knob)
     return frames
 
 
