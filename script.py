@@ -57,9 +57,8 @@ def second_pass( commands, num_frames ):
         if 'knob' in command:
             knob = command['knob']
         if c == "vary":
-            for i in range(num_frames):
-                frames.append(knob)
-    print frames
+            for i in range(int(args[0]),int(args[1])):
+                frames[i]['knob'] = knob
     return frames
 
 
@@ -112,7 +111,7 @@ def run(filename):
     coords1 = []
 
     for command in commands:
-        #print command
+        print command
         c = command['op']
         args = command['args']
         knob_value = 1
