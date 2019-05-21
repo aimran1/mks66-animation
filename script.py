@@ -51,14 +51,15 @@ def first_pass( commands ):
   ===================="""
 def second_pass( commands, num_frames ):
     frames = [ {} for i in range(num_frames) ]
-    print commands
     for command in commands:
         c = command['op']
         args = command['args']
-        knob = command['knobs']
+        if 'knob' in command:
+            knob = command['knob']
         if c == "vary":
-            for i range(num_frames):
+            for i in range(num_frames):
                 frames.append(knob)
+    print frames
     return frames
 
 
@@ -111,7 +112,7 @@ def run(filename):
     coords1 = []
 
     for command in commands:
-        print command
+        #print command
         c = command['op']
         args = command['args']
         knob_value = 1
