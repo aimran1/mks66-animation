@@ -58,7 +58,8 @@ def second_pass( commands, num_frames ):
             knob = command['knob']
         if c == "vary":
             for i in range(int(args[0]),int(args[1])):
-                frames[i]['knob'] = knob
+                frames[i][knob] = i /(args[1]-args[0])
+    print frames
     return frames
 
 
