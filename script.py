@@ -21,16 +21,29 @@ from draw import *
 def first_pass( commands ):
     name = ''
     num_frames = 1
+
+    n = False
+    f = False
+    v = False
+
     for command in commands:
         c = command['op']
         args = command['args']
         if c == "basename":
             name = args[0]
+            n = True
         if c == "frames":
             num_frames = args[0]
+            f = True
         elif c == "vary":
-            break
-    return (name, int(num_frames))
+            v = True
+
+    if v and not f:
+        exit()
+    if f and not n:
+        name = "image"
+
+    return (name, num_frames)
 
 """======== second_pass( commands ) ==========
 
