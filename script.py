@@ -110,7 +110,7 @@ def run(filename):
     frames = second_pass(commands, num_frames)
 
     for i in range(int(num_frames)):
-        print i
+        #print i
         tmp = new_matrix()
         ident( tmp )
 
@@ -124,7 +124,7 @@ def run(filename):
         coords1 = []
 
         for command in commands:
-            #print command
+            print command
             c = command['op']
             args = command['args']
             knob_value = 1
